@@ -2,6 +2,7 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt');
+const axios = require('axios');
 
 const SALT_ROUNDS = 5;
 
@@ -21,7 +22,11 @@ const User = db.define('user', {
 
 module.exports = User
 
+/**
+ * instanceMethods
+ */
 User.prototype.correctPassword = function(candidatePwd) {
+  //we need to compare the plain version to an encrypted version of the password
   return bcrypt.compare(candidatePwd, this.password);
 }
 
@@ -29,6 +34,9 @@ User.prototype.generateToken = function() {
   return jwt.sign({id: this.id}, process.env.JWT)
 }
 
+/**
+ * classMethods
+ */
 User.authenticate = async function({ username, password }){
     const user = await this.findOne({where: { username }})
     if (!user || !(await user.correctPassword(password))) {
@@ -48,9 +56,9 @@ User.findByToken = async function(token) {
     }
     return user
   } catch (ex) {
-    const error = Error('bad token')
-    error.status = 401
-    throw error
+    // const error = Error('bad token')
+    // error.status = 401
+   // throw error
   }
 }
 
