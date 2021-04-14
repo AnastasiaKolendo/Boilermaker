@@ -1,7 +1,7 @@
 //whatever is in the environment variable PORT || 8080
 //run PORT=4444 node index.js, Node will use process.env.PORT which equals to 4444
 
-const PORT = process.env.PORT || 8080;
+const port = process.env.PORT || 8080;
 const app = require("../server/index");
 const db = require("./db/db.js");
 
@@ -21,9 +21,9 @@ const init = async () => {
     //DROP TABLE IF EXISTS
     await db.sync({force: true})
     // start listening (and create a 'server' object representing our server)
-    app.listen(PORT, () => console.log(`
-    Listening on port ${PORT}
-    http://localhost:${PORT}/
+    app.listen(port, () => console.log(`
+    Listening on port ${port}
+    http://localhost:${port}/
 `))
   } catch (ex) {
     console.log(ex)
