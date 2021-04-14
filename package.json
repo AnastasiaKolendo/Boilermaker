@@ -2,7 +2,7 @@
   "name": "",
   "version": "1.0.0",
   "description": "",
-  "main": "webpack.config.js"
+  "main": "webpack.config.js",
   "scripts": {
     "build": "webpack",
     "start": "node server/server.js",
