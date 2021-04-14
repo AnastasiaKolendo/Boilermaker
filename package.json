@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "webpack.config.js",
-  "engines": {
-    "node": "4.15.0"
-  },
   "scripts": {
     "build": "webpack",
     "start": "node server/server.js",
