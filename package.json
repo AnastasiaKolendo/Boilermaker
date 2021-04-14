@@ -13,7 +13,6 @@
     "start": "node server/server.js",
     "start:dev": "npm run build:dev & npm run start-server",
     "start:dev:logger": "LOGGING=true npm run start:dev",
-    "start:dev:seed": "SEED=true npm run start:dev",
     "start-server": "JWT=shh nodemon server/server.js -e html,js,scss --ignore public --ignore client"
   },
   "author": "",
