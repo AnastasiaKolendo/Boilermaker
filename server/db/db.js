@@ -1,18 +1,24 @@
 //exports the Sequelize constructor
 const Sequelize = require("sequelize");
 
+const pkg = require('../../package.json')
+
+
 const config = {
-  logging: false,
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false,
-    },
-  },
+  logging: false
 };
 
-if (process.env.LOGGING) {
-  delete config.logging;
+if(process.env.LOGGING === 'true'){
+  delete config.logging
+}
+
+//https://stackoverflow.com/questions/61254851/heroku-postgres-sequelize-no-pg-hba-conf-entry-for-host
+if(process.env.DATABASE_URL){
+  config.dialectOptions = {
+    ssl: {
+      rejectUnauthorized: false
+    }
+  };
 }
 
 //create an instance of sequelize
