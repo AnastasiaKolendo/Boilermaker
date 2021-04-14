@@ -1,6 +1,7 @@
 module.exports = {
   entry: [
     // includes a custom regenerator runtime and core-js
+    'babel-polyfill',
      './client/index.js'
   ],
   output: {
@@ -18,7 +19,7 @@ module.exports = {
            options: {
               presets: [
                  '@babel/preset-react',
-                 '@babel/env'
+                 '@babel/preset-env'
               ]
            }
         },
