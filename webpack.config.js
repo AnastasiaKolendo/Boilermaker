@@ -1,8 +1,7 @@
 module.exports = {
   entry: [
     // includes a custom regenerator runtime and core-js
-     'babel-polyfill',
-     '.webpack.config.js'
+     './client/index.js'
   ],
   output: {
      path: __dirname,
